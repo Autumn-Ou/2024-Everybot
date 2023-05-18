@@ -19,31 +19,32 @@ import edu.wpi.first.math.system.plant.LinearSystemId;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class OperatorConstants {
-    public static final int k_DriverControllerPort = 0;
-  }
-  public static class DriveConstants {
-    // Spark Max Setup
-    public static final int k_currentLimit = 40;
-    public static final CANSparkMax.IdleMode k_idleMode = CANSparkMax.IdleMode.kBrake;
+    public static class OperatorConstants {
+        public static final int k_DriverControllerPort = 0;
+    }
 
-    // Kinematics & Estimation
-    public static final double k_trackWidth = 0.5900928;
-    public static final double k_wheelDiameterMeters = 0.15;
-    public static final double k_driveGearing = 8.25;
+    public static class DriveConstants {
+        // Spark Max Setup
+        public static final int k_currentLimit = 40;
+        public static final CANSparkMax.IdleMode k_idleMode = CANSparkMax.IdleMode.kBrake;
 
-    // Simulation
-    public static final DCMotor k_driveMotor = DCMotor.getNEO(2);
+        // Kinematics & Estimation
+        public static final double k_trackWidth = 0.5900928;
+        public static final double k_wheelDiameterMeters = 0.15;
+        public static final double k_driveGearing = 8.25;
 
-    // These values are calculated using Sysid, documentation for how to do this is found in docs/CALIBRATING.md
-    public static final double kvVoltSecondsPerMeter = 3;
-    public static final double kaVoltSecondsSquaredPerMeter = 0.3;
-    public static final double kvVoltSecondsPerRadian = 2;
-    public static final double kaVoltSecondsSquaredPerRadian = 0.4;
-    public static final LinearSystem<N2, N2, N2> k_drivetrainPlant = LinearSystemId.identifyDrivetrainSystem(
-            kvVoltSecondsPerMeter,
-            kaVoltSecondsSquaredPerMeter,
-            kvVoltSecondsPerRadian,
-            kaVoltSecondsSquaredPerRadian);
-  }
+        // Simulation
+        public static final DCMotor k_driveMotor = DCMotor.getNEO(2);
+
+        // These values are calculated using Sysid, documentation for how to do this is found in docs/CALIBRATING.md
+        public static final double kvVoltSecondsPerMeter = 3;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.3;
+        public static final double kvVoltSecondsPerRadian = 2;
+        public static final double kaVoltSecondsSquaredPerRadian = 0.4;
+        public static final LinearSystem<N2, N2, N2> k_drivetrainPlant = LinearSystemId.identifyDrivetrainSystem(
+                kvVoltSecondsPerMeter,
+                kaVoltSecondsSquaredPerMeter,
+                kvVoltSecondsPerRadian,
+                kaVoltSecondsSquaredPerRadian);
+    }
 }

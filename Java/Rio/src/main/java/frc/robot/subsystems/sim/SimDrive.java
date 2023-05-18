@@ -11,17 +11,19 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.supers.DriveSuper;
 
 public class SimDrive extends DriveSuper {
-    /** The left-side drive encoder */
+    public static DifferentialDrivetrainSim driveSim;
+    /**
+     * The left-side drive encoder
+     */
     private final Encoder leftEncoder = new Encoder(0, 1, false);
-
-    /** The right-side drive encoder */
+    /**
+     * The right-side drive encoder
+     */
     private final Encoder rightEncoder = new Encoder(2, 3, false);
-
+    private final Field2d field = new Field2d();
     // Simulation of drivetrain & encoders
     private EncoderSim leftEncoderSim;
     private EncoderSim rightEncoderSim;
-    public static DifferentialDrivetrainSim driveSim;
-    private final Field2d field = new Field2d();
 
     /**
      * This method is used to create the simulation of the drive base. It is called by the constructor of this class.
@@ -50,14 +52,16 @@ public class SimDrive extends DriveSuper {
                 DriveConstants.k_driveMotor,
                 DriveConstants.k_driveGearing,
                 DriveConstants.k_trackWidth,
-                DriveConstants.k_wheelDiameterMeters/2,
+                DriveConstants.k_wheelDiameterMeters / 2,
                 VecBuilder.fill(0.005, 0.005, 0.0001, 0.05, 0.05, 0.005, 0.005)
         );
 
         driveSim.setPose(driveOdometry.getPoseMeters());
     }
 
-    /** This method is used to create the encoder sims. It is called by the constructor of this class. */
+    /**
+     * This method is used to create the encoder sims. It is called by the constructor of this class.
+     */
     private void createSimEncoders() {
         leftEncoder.setDistancePerPulse(42);
         rightEncoder.setDistancePerPulse(42);
@@ -68,6 +72,7 @@ public class SimDrive extends DriveSuper {
     /**
      * This is an implementation of the abstract method in DriveSuper. It is needed as how this is calculated varies
      * between the real and simulated robot.
+     *
      * @return The distance the left side of the robot has traveled in meters.
      */
     @Override
@@ -78,6 +83,7 @@ public class SimDrive extends DriveSuper {
     /**
      * This is an implementation of the abstract method in DriveSuper. It is needed as how this is calculated varies
      * between the real and simulated robot.
+     *
      * @return The distance the right side of the robot has traveled in meters.
      */
     @Override

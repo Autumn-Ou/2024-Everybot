@@ -1,16 +1,12 @@
 package frc.robot.subsystems.supers;
 
+import com.revrobotics.CANSparkMax;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import frc.robot.Constants.DriveConstants;
-
-// Rev imports for Spark Max motor controllers
-import com.revrobotics.CANSparkMax;
-import frc.robot.Constants;
 
 public abstract class DriveSuper extends SubsystemBase {
     // The motor controllers and control groups for the drive base
@@ -20,13 +16,16 @@ public abstract class DriveSuper extends SubsystemBase {
     public static final CANSparkMax rightFront = new CANSparkMax(13, CANSparkMax.MotorType.kBrushless);
     public static final CANSparkMax rightRear = new CANSparkMax(14, CANSparkMax.MotorType.kBrushless);
     public static final MotorControllerGroup rightMotors = new MotorControllerGroup(rightFront, rightRear);
-
-    /** The differential drive object that will be used to control the drive base with wpilibs built in methods. */
-    public final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
-    /** The odometry object that will be used to track the position of the robot. */
+    /**
+     * The odometry object that will be used to track the position of the robot.
+     */
     public static final DifferentialDriveOdometry driveOdometry = new DifferentialDriveOdometry(
             new Rotation2d(0), 0, 0
     );
+    /**
+     * The differential drive object that will be used to control the drive base with wpilibs built in methods.
+     */
+    public final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
     /**
      * The constructor for the DriveSuper class. This is called by the constructors of the RealDrive and SimDrive

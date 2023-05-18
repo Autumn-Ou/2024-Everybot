@@ -11,6 +11,7 @@ public class RealDrive extends DriveSuper {
     /**
      * This is an implementation of the abstract method in DriveSuper. It is needed as how this is calculated varies
      * between the real and simulated robot.
+     *
      * @return The distance the left side of the robot has traveled in meters.
      */
     @Override
@@ -21,6 +22,7 @@ public class RealDrive extends DriveSuper {
     /**
      * This is an implementation of the abstract method in DriveSuper. It is needed as how this is calculated varies
      * between the real and simulated robot.
+     *
      * @return The distance the right side of the robot has traveled in meters.
      */
     @Override
