@@ -11,9 +11,9 @@ on:
     branches: ["main", "rolling-release"]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-java:
+  Rio-Java:
     # The type of runner that the job will run on
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-22.04
 
     # This grabs the WPILib docker container
     container: wpilib/roborio-cross-ubuntu:2023-22.04
@@ -36,11 +36,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile and run tests on robot code
         working-directory: ./Java/Rio
-        run: ./gradlew build --stacktrace --debug
+        run: ./gradlew build --stacktrace
 
-  build-cpp:
+  Rio-Cpp:
     # The type of runner that the job will run on
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-22.04
 
     # This grabs the WPILib docker container
     container: wpilib/roborio-cross-ubuntu:2023-22.04
@@ -63,4 +63,4 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile and run tests on robot code
         working-directory: ./Cpp/Rio
-        run: ./gradlew build --stacktrace --debug
+        run: ./gradlew build --stacktrace
