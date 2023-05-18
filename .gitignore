@@ -1,3 +1,11 @@
 ## IDE files
 /.idea
 /.vscode
+
+Java/Rio/networktables.json
+Java/Rio/simgui-ds.json
+Java/Rio/simgui.json
+
+Cpp/Rio/networktables.json
+Cpp/Rio/simgui-ds.json
+Cpp/Rio/simgui.json

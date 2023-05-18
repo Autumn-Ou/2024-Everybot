@@ -4,13 +4,18 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.RobotBase;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.drive.ArcadeDrive;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.subsystems.real.RealDrive;
+import frc.robot.subsystems.sim.SimDrive;
+import frc.robot.subsystems.supers.DriveSuper;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,17 +25,39 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+  private DriveSuper drivetrain;
+  /** Can be any command but 3 provided options are available under frc.robot.commands.drive */
+  public static Command driveCommand;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+  public static final CommandXboxController driverController =
+      new CommandXboxController(OperatorConstants.k_DriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    createSubsystems();
+    configureCommands();
     // Configure the trigger bindings
     configureBindings();
   }
+
+  /**
+   * Use this method to assign your real and simulated subsystems to their appropriate Super.
+   */
+  private void createSubsystems() {
+      if(RobotBase.isSimulation()) {
+        drivetrain = new SimDrive();
+      } else {
+        drivetrain = new RealDrive();
+      }
+  }
+
+  /** Use this method to define your commands. */
+    private void configureCommands() {
+        // If you have issues with your drive command check the inversions needed for your controller
+        driveCommand = new ArcadeDrive(drivetrain);
+    }
 
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
@@ -43,12 +70,12 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    new Trigger(exampleSubsystem::exampleCondition)
+            .onTrue(new ExampleCommand(exampleSubsystem));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    driverController.b().whileTrue(exampleSubsystem.exampleMethodCommand());
   }
 
   /**
@@ -58,6 +85,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return Autos.exampleAuto(exampleSubsystem);
   }
 }
