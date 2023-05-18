@@ -26,7 +26,7 @@ import frc.robot.subsystems.supers.DriveSuper;
 public class RobotContainer {
     // Replace with CommandPS4Controller or CommandJoystick if needed
     public static final CommandXboxController driverController =
-            new CommandXboxController(OperatorConstants.k_DriverControllerPort);
+            new CommandXboxController(OperatorConstants.k_driverControllerPort);
     /**
      * Can be any command but 3 provided options are available under frc.robot.commands.drive
      */

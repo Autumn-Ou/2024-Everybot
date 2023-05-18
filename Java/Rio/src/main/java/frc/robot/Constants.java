@@ -20,7 +20,7 @@ import edu.wpi.first.math.system.plant.LinearSystemId;
  */
 public final class Constants {
     public static class OperatorConstants {
-        public static final int k_DriverControllerPort = 0;
+        public static final int k_driverControllerPort = 0;
     }
 
     public static class DriveConstants {
