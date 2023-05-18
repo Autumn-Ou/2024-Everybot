@@ -24,7 +24,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+            upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
             asset_path: ./Everybot_Java_Release.zip
             asset_name: Everybot_Java_Release.zip
             asset_content_type: application/zip
@@ -48,7 +48,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+          upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
           asset_path: ./Everybot_Cpp_Release.zip
           asset_name: Everybot_Cpp_Release.zip
           asset_content_type: application/zip
@@ -72,7 +72,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+          upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
           asset_path: ./Everybot_Python_Release.zip
           asset_name: Everybot_Python_Release.zip
           asset_content_type: application/zip
