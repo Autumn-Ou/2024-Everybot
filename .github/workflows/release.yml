@@ -12,22 +12,33 @@ jobs:
     # This grabs the WPILib docker container
     container: wpilib/roborio-cross-ubuntu:2023-22.04
 
-    name: "Release: Generate Java Everybot"
+    name: "Release: Java Everybot"
     steps:
-        - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-        - name: "Zip Java Everybot"
-          run: zip -r Everybot_Java_Release.zip Java
+      - name: "Release: Get version number"
+        id: get_version
+        if: github.event_name == 'release'
+        uses: battila7/get-version-action@v2
+      - name: "Release: Get release info"
+        id: get_release_info
+        if: github.event_name == 'release'
+        uses: bruceadams/get-release@v1.2.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        - name: "Publish Java Everybot"
-          uses: actions/upload-release-asset@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
-            asset_path: ./Everybot_Java_Release.zip
-            asset_name: Everybot_Java_Release.zip
-            asset_content_type: application/zip
+      - name: "Zip Java Everybot"
+        run: zip -r Everybot_Java_Release.zip Java
+
+      - name: "Publish Java Everybot"
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+          asset_path: ./Everybot_Java_Release.zip
+          asset_name: Everybot_Java_Release.zip
+          asset_content_type: application/zip
 
   Release-Cpp:
     # The type of runner that the job will run on
@@ -36,9 +47,20 @@ jobs:
     # This grabs the WPILib docker container
     container: wpilib/roborio-cross-ubuntu:2023-22.04
 
-    name: "Release: Generate Cpp Everybot"
+    name: "Release: Cpp Everybot"
     steps:
       - uses: actions/checkout@v2
+
+      - name: "Release: Get version number"
+        id: get_version
+        if: github.event_name == 'release'
+        uses: battila7/get-version-action@v2
+      - name: "Release: Get release info"
+        id: get_release_info
+        if: github.event_name == 'release'
+        uses: bruceadams/get-release@v1.2.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Zip Cpp Everybot"
         run: zip -r Everybot_Cpp_Release.zip Cpp
@@ -48,7 +70,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
+          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
           asset_path: ./Everybot_Cpp_Release.zip
           asset_name: Everybot_Cpp_Release.zip
           asset_content_type: application/zip
@@ -60,9 +82,20 @@ jobs:
     # This grabs the WPILib docker container
     container: wpilib/roborio-cross-ubuntu:2023-22.04
 
-    name: "Release: Generate Python Everybot"
+    name: "Release: Python Everybot"
     steps:
       - uses: actions/checkout@v2
+
+      - name: "Release: Get version number"
+        id: get_version
+        if: github.event_name == 'release'
+        uses: battila7/get-version-action@v2
+      - name: "Release: Get release info"
+        id: get_release_info
+        if: github.event_name == 'release'
+        uses: bruceadams/get-release@v1.2.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Zip Python Everybot"
         run: zip -r Everybot_Python_Release.zip Python
@@ -72,7 +105,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.server_url }}/${{ github.repository }}/releases/latest
+          upload_url: ${{ steps.get_release_info.outputs.upload_url }}
           asset_path: ./Everybot_Python_Release.zip
           asset_name: Everybot_Python_Release.zip
           asset_content_type: application/zip
