@@ -30,4 +30,4 @@ namespace DriveConstants {
     constexpr units::meter_t k_trackWidth = 0.5900928_m;
     constexpr units::meter_t k_wheelDiameter = 0.15_m;
     constexpr double k_driveGearing = 8.25;
-}  // namespeace DriveConstants
+}  // namespace DriveConstants
