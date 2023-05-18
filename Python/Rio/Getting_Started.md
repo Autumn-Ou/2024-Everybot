@@ -5,13 +5,10 @@
 2. Install the [REV client](https://docs.revrobotics.com/rev-hardware-client/) to interact with the Spark MAX motor
    controllers.
 3. Open `2024-Everybot\Python\Rio` in VSCode to get proper tooling support
-4. Navigate to `.wpilib\wpilib_preferences.json` and change the team number to match your own.
-5. To run a test build either click the wpilib logo and search for "build robot code" or in your terminal type
-   `./gradlew build`
-6. To start using the simulation either again search for "Simulate Robot Code" or type in your terminal
-   `./gradlew simulateJava`
-7. To deploy to the actual robot either again search for "Deploy Robot Code" or type in your terminal
-   `./gradlew deploy`
+4. To start using the simulation type in your terminal `py -3 robot.py sim` on windows or `python3 robot.py sim` on
+   linux/mac
+5. To deploy to the actual robot type in your terminal `py -3 robot.py deploy` on windows or `python3 robot.py deploy` 
+on linux/mac
 
 ## Hardware Setup
 
@@ -28,13 +25,14 @@
 | Right Back  | 14 |
 
 3. Confirm your Rio is connected to the radio, you can connect to the robot with the DS, & the CAN network is fully
-   intact, from here you're ready to start deploying the base everybot code by running `./gradlew deploy` in your
+   intact, from here you're ready to start deploying the base everybot code by running `py -3 robot.py deploy` in your
    terminal.
 
 ### Resources
 - [WPILib Documentation](https://docs.wpilib.org/en/stable/)
-- [REV Robotics Documentation](https://docs.revrobotics.com/)
-- [CTRE Documentation](https://phoenix-documentation.readthedocs.io/en/latest/index.html)
+- [RobotPy Documentation](https://robotpy.readthedocs.io/en/stable/)
+- [REV Robotics Documentation](https://robotpy.readthedocs.io/projects/rev/en/stable/api.html)
+- [CTRE Documentation](https://robotpy.readthedocs.io/projects/ctre/en/stable/api.html)
 - [Introduction to Python Programming Princeton](https://introcs.cs.princeton.edu/python/home/)
 - [Introduction to Python Video](https://www.youtube.com/watch?v=rfscVS0vtbw)
 - [Control Theory for FRC](https://controls-in-frc.link/)
@@ -50,9 +48,9 @@ Follow the instructions on the [Robot Py Website](https://robotpy.readthedocs.io
 set up your environment. Make sure to install the Rev package too.
 
 ### Using Gradle
-Gradle is used to build, deploy, simulate, and more, it is the backend tooling for WPILib code bases, in most cases you
-will not need to touch `settings.gradle` or `build.gradle` but if you need to add a dependency that does not have a
-vendor dep you can add it to `build.gradle` under dependencies to install a maven package.
+Currently, RobotPy does not rely on gradle unlike Java & C++ implementations, however on the package instillation side
+pip makes a fantastic replacement for python packages and the 
+[Robot Py Website](https://robotpy.readthedocs.io/en/stable/install/robot.html) will take you through how to use it.
 
 ### Using Git
 Git & Specifically GitHub are used to manage code changes and versions, if you are not familiar with git, you can learn
@@ -63,6 +61,7 @@ add a single file `example.txt`, a folder `/example/`, or a file type `*.txt`. T
 desktop client is recommended, it can be downloaded at [GitHub Desktop](https://desktop.github.com/).
 
 #### GitHub Actions
+*Python Support for this coming soon**
 This repository contains a GitHub Actions workflow that will automatically build and test the code on every push to
 confirm that the code compiles and passes all tests. This is a great way to ensure that the code is always in a working
 state. The workflow can be found in `.github/workflows/build.yml`. The workflow is configured to run on every push to
