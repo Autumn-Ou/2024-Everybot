@@ -20,7 +20,7 @@ controllers.
 - [Introduction to Java Programming Princeton](https://introcs.cs.princeton.edu/java/home/)
 - [Introduction to Java Video](https://www.youtube.com/watch?v=A74TOX803D0&t)
 - [Control Theory for FRC](https://controls-in-frc.link/)
-- Intro to Mathematics [3 Brown 1 Blue](https://www.youtube.com/@3blue1brown): 
+- Intro to Mathematics [3 Blue 1 Brown](https://www.youtube.com/@3blue1brown): 
   - [Geometry](https://www.youtube.com/watch?v=GNcFjFmqEc8&list=PLZHQObOWTQDMXMi3bUMThGdYqos36X_lA)
   - [Statistics](https://www.youtube.com/watch?v=8idr1WZ1A7Q&list=PL0t49HdSsmyZHmM96zyRCf79kSBnb9RRH)
   - [Linear Algebra](https://www.youtube.com/watch?v=kjBOesZCoqc&list=PL0-GT3co4r2y2YErbmuJw2L5tW4Ew2O5B)
