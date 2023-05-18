@@ -14,11 +14,11 @@ import frc.robot.Constants;
 
 public abstract class DriveSuper extends SubsystemBase {
     // The motor controllers and control groups for the drive base
-    public static final CANSparkMax leftFront = new CANSparkMax(1, CANSparkMax.MotorType.kBrushless);
-    public static final CANSparkMax leftRear = new CANSparkMax(2, CANSparkMax.MotorType.kBrushless);
+    public static final CANSparkMax leftFront = new CANSparkMax(11, CANSparkMax.MotorType.kBrushless);
+    public static final CANSparkMax leftRear = new CANSparkMax(12, CANSparkMax.MotorType.kBrushless);
     public static final MotorControllerGroup leftMotors = new MotorControllerGroup(leftFront, leftRear);
-    public static final CANSparkMax rightFront = new CANSparkMax(3, CANSparkMax.MotorType.kBrushless);
-    public static final CANSparkMax rightRear = new CANSparkMax(4, CANSparkMax.MotorType.kBrushless);
+    public static final CANSparkMax rightFront = new CANSparkMax(13, CANSparkMax.MotorType.kBrushless);
+    public static final CANSparkMax rightRear = new CANSparkMax(14, CANSparkMax.MotorType.kBrushless);
     public static final MotorControllerGroup rightMotors = new MotorControllerGroup(rightFront, rightRear);
 
     /** The differential drive object that will be used to control the drive base with wpilibs built in methods. */

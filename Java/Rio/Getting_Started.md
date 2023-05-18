@@ -1,6 +1,6 @@
 # Getting Started
 
-## Setup
+## Code Setup
 1. Install the newest [WPILib release](https://github.com/wpilibsuite/allwpilib/releases) for your platform.
 2. Install the [REV client](https://docs.revrobotics.com/rev-hardware-client/) to interact with the Spark MAX motor 
 controllers.
@@ -12,6 +12,25 @@ controllers.
 `./gradlew simulateJava`
 7. To deploy to the actual robot either again search for "Deploy Robot Code" or type in your terminal
 `./gradlew deploy`
+
+For immediate testing as soon as you have the code base downloaded you can run `./gradlew simulateJava` to start the
+simGUI to get a feel for driving, and start developing code while your everybot is being assembled.
+
+## Hardware Setup
+1. Flash your radio with the newest firmware, instructions can be found 
+[here](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-3/radio-programming.html)
+2. Set your Spark Max CAN IDs using the [REV client](https://docs.revrobotics.com/rev-hardware-client/) to match the 
+following table:
+
+| Motor         | ID |
+|---------------|----|
+| Left Front    | 11 |
+| Left Back     | 12 |
+| Right Front   | 13 |
+| Right Back    | 14 |
+
+3. Confirm your Rio is connected to the radio, you can connect to the robot with the DS, & the CAN network is fully
+intact, from here you're ready to start deploying the base everybot code by running `./gradlew deploy` in your terminal.
 
 ### Resources
 - [WPILib Documentation](https://docs.wpilib.org/en/stable/)
