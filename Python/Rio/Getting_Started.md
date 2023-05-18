@@ -13,6 +13,24 @@
 7. To deploy to the actual robot either again search for "Deploy Robot Code" or type in your terminal
    `./gradlew deploy`
 
+## Hardware Setup
+
+1. Flash your radio with the newest firmware, instructions can be found
+   [here](https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-3/radio-programming.html)
+2. Set your Spark Max CAN IDs using the [REV client](https://docs.revrobotics.com/rev-hardware-client/) to match the
+   following table:
+
+| Motor       | ID |
+|-------------|----|
+| Left Front  | 11 |
+| Left Back   | 12 |
+| Right Front | 13 |
+| Right Back  | 14 |
+
+3. Confirm your Rio is connected to the radio, you can connect to the robot with the DS, & the CAN network is fully
+   intact, from here you're ready to start deploying the base everybot code by running `./gradlew deploy` in your
+   terminal.
+
 ### Resources
 - [WPILib Documentation](https://docs.wpilib.org/en/stable/)
 - [REV Robotics Documentation](https://docs.revrobotics.com/)
@@ -27,8 +45,9 @@
     - [Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
 - [Photon Vision](https://docs.photonvision.org/en/latest/)
 
-### Using Vendordeps
-Need to see python framework for vendordeps, may end up being a bunch of c++ calls.
+### Importing Needed Libraries
+Follow the instructions on the [Robot Py Website](https://robotpy.readthedocs.io/en/stable/install/robot.html) to 
+set up your environment. Make sure to install the Rev package too.
 
 ### Using Gradle
 Gradle is used to build, deploy, simulate, and more, it is the backend tooling for WPILib code bases, in most cases you
